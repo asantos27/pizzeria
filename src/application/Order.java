@@ -5,6 +5,6 @@ package application;
  * An instance of this class has a unique phone number
  * @author Daniel Flts, Alyssa Santos
  */
-public class Order {
+public class Order implements Customizable{
 
 }

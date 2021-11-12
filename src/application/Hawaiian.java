@@ -8,10 +8,25 @@ import java.util.ArrayList;
  */
 public class Hawaiian extends Pizza {
 
+    private double pizzaPrice = 10.99;
+    private static int defaultTopping = 2;
+
+    /**
+     * Constructor for Hawaiian class
+     */
+    public Hawaiian() {
+        super();
+        this.addTopping(Topping.HAM);
+        this.addTopping(Topping.PINEAPPLE);
+    }
+
     /**
      * Calculates the price of a hawaiian pizza
      * @return price of a hawaiian pizza
      */
     @Override
-    public double price() {}
+    public double price() {
+        pizzaPrice += this.getSizePrice() + Math.max(0, toppings.size() - defaultTopping) * additionalTopping;
+        return pizzaPrice;
+    }
 }

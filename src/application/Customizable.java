@@ -2,7 +2,7 @@ package application;
 
 /**
  * Java interface to be implemented by Pizza and its subclasses
- * @author Bhavika Teli and Eduardo Alba
+ * @author
  */
 public interface Customizable {
 

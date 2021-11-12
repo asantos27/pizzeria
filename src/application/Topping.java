@@ -1,6 +1,6 @@
 package application;
 
 
-public class Topping{
-
+public enum Topping{
+    CHEESE, HAM, PINEAPPLE, PEPPERONI, ONIONS, SAUSAGE, MUSHROOMS;
 }

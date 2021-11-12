@@ -7,8 +7,8 @@ package application;
  */
 public class PizzaMaker { //create an instance of subclasses based on the chosen flavor
 
-    public static Pizza createPizza(String flavor) {
-        //write the code for create
-        return;
-    }
+//    public static Pizza createPizza(String flavor) {
+//        //write the code for create
+//        return;
+//    }
 }

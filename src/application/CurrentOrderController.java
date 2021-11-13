@@ -1,18 +1,42 @@
 package application;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
-/**
- * Controller to the Current Order UI
- * @author Daniel Flts, Alyssa Santos
- */
 public class CurrentOrderController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private ListView<String> currOrderList;
+
+    @FXML
+    private TextField orderTotalText;
+
+    @FXML
+    private TextField outputPhoneNum;
+
+    @FXML
+    private Button placeOrder;
+
+    @FXML
+    private Button removePizza;
+
+    @FXML
+    private TextField salesTaxText;
+
+    @FXML
+    private TextField subtotalText;
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+
     }
+
+    @FXML
+    void removePizza(ActionEvent event) {
+
+    }
+
 }

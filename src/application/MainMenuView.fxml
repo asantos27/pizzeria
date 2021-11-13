@@ -1,16 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="application.MainMenuController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
+   <children>
+      <Text fill="#da2626" layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RU Pizzeria" textAlignment="CENTER" wrappingWidth="572.0">
+         <font>
+            <Font name="Monospaced Bold" size="49.0" />
+         </font>
+      </Text>
+      <HBox layoutX="91.0" layoutY="82.0" prefHeight="37.0" prefWidth="419.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="202.0" text="Customer Phone Number:">
+               <font>
+                  <Font name="Monospaced Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="26.0" prefWidth="202.0" />
+         </children>
+      </HBox>
+      <Button fx:id="orderDeluxeButton" contentDisplay="TOP" layoutX="62.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order deluxe">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/deluxe.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Monospaced Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="orderHawaiianButton" contentDisplay="TOP" layoutX="237.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order hawaiian">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/hawaiian.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Monospaced Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="orderPepperoniButton" contentDisplay="TOP" layoutX="415.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order pepperoni">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pepperoni.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Monospaced Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="currOrderButton" contentDisplay="TOP" layoutX="162.0" layoutY="280.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="97.0" text="current order">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/currentorder.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Monospaced Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="storeOrdersButton" contentDisplay="TOP" layoutX="343.0" layoutY="280.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="97.0" text="store orders">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pizzeria.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Monospaced Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

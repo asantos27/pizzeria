@@ -1,18 +1,23 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
-/**
- * Controller to the Main Menu UI
- * @author Daniel Flts, Alyssa Santos
- */
 public class MainMenuController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    private Button currOrderButton;
+
+    @FXML
+    private Button orderDeluxeButton;
+
+    @FXML
+    private Button orderHawaiianButton;
+
+    @FXML
+    private Button orderPepperoniButton;
+
+    @FXML
+    private Button storeOrdersButton;
+
 }

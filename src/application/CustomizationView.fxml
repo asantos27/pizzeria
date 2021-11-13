@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="application.CustomizationController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomizationController">
+   <children>
+      <ImageView fx:id="pizzaImage" fitHeight="141.0" fitWidth="177.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="389.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Toppings" wrappingWidth="132.67236328125">
+         <font>
+            <Font name="Monospaced Bold" size="13.0" />
+         </font>
+      </Text>
+      <ListView fx:id="additionalToppingsList" layoutX="33.0" layoutY="200.0" prefHeight="129.0" prefWidth="177.0" />
+      <Text layoutX="34.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Additional Toppings" wrappingWidth="150.0">
+         <font>
+            <Font name="Monospaced Bold" size="13.0" />
+         </font>
+      </Text>
+      <ListView fx:id="selectedToppingsList" layoutX="391.0" layoutY="200.0" prefHeight="129.0" prefWidth="177.0" />
+      <Text layoutX="395.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pizza Size" wrappingWidth="94.67236328125">
+         <font>
+            <Font name="Monospaced Bold" size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="pizzaPriceText" editable="false" layoutX="220.0" layoutY="350.0" />
+      <Text layoutX="152.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price $" wrappingWidth="64.88916015625">
+         <font>
+            <Font name="Monospaced Regular" size="13.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="sizeComboBox" layoutX="391.0" layoutY="72.0" prefWidth="150.0" />
+      <Button fx:id="addToppingButton" layoutX="262.0" layoutY="223.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="add &gt;&gt;" />
+      <Button fx:id="removeToppingButton" layoutX="262.0" layoutY="265.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="&lt;&lt; remove" />
+      <Button fx:id="addOrderButton" layoutX="404.0" layoutY="350.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Add to order" />
+   </children>
+</AnchorPane>

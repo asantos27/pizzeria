@@ -1,18 +1,36 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
-/**
- * Controller to the Pizza Customization UI
- * @author Daniel Flts, Alyssa Santos
- */
 public class CustomizationController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    private Button addOrderButton;
+
+    @FXML
+    private Button addToppingButton;
+
+    @FXML
+    private ListView<String> additionalToppingsList;
+
+    @FXML
+    private ImageView pizzaImage;
+
+    @FXML
+    private TextField pizzaPriceText;
+
+    @FXML
+    private Button removeToppingButton;
+
+    @FXML
+    private ListView<String> selectedToppingsList;
+
+    @FXML
+    private ComboBox<String> sizeComboBox;
+
 }

@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <children>
       <Text fill="#da2626" layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RU Pizzeria" textAlignment="CENTER" wrappingWidth="572.0">
@@ -25,10 +24,10 @@
                   <Font name="Monospaced Bold" size="13.0" />
                </font>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="202.0" />
+            <TextField fx:id="inputPhoneNum" prefHeight="26.0" prefWidth="202.0" />
          </children>
       </HBox>
-      <Button fx:id="orderDeluxeButton" contentDisplay="TOP" layoutX="62.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order deluxe">
+      <Button fx:id="orderDeluxeButton" contentDisplay="TOP" layoutX="62.0" layoutY="129.0" mnemonicParsing="false" onAction="#orderDeluxe" prefHeight="101.0" prefWidth="127.0" text="order deluxe">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +39,7 @@
             <Font name="Monospaced Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="orderHawaiianButton" contentDisplay="TOP" layoutX="237.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order hawaiian">
+      <Button fx:id="orderHawaiianButton" contentDisplay="TOP" layoutX="237.0" layoutY="129.0" mnemonicParsing="false" onAction="#orderHawaiian" prefHeight="101.0" prefWidth="127.0" text="order hawaiian">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -52,7 +51,7 @@
             <Font name="Monospaced Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="orderPepperoniButton" contentDisplay="TOP" layoutX="415.0" layoutY="129.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="127.0" text="order pepperoni">
+      <Button fx:id="orderPepperoniButton" contentDisplay="TOP" layoutX="415.0" layoutY="129.0" mnemonicParsing="false" onAction="#orderPepperoni" prefHeight="101.0" prefWidth="127.0" text="order pepperoni">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -64,7 +63,7 @@
             <Font name="Monospaced Bold" size="11.0" />
          </font>
       </Button>
-      <Button fx:id="currOrderButton" contentDisplay="TOP" layoutX="162.0" layoutY="280.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="97.0" text="current order">
+      <Button fx:id="currOrderButton" contentDisplay="TOP" layoutX="162.0" layoutY="280.0" mnemonicParsing="false" onAction="#openCurrOrder" prefHeight="71.0" prefWidth="97.0" text="current order">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -76,7 +75,7 @@
             <Font name="Monospaced Regular" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="storeOrdersButton" contentDisplay="TOP" layoutX="343.0" layoutY="280.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="97.0" text="store orders">
+      <Button fx:id="storeOrdersButton" contentDisplay="TOP" layoutX="343.0" layoutY="280.0" mnemonicParsing="false" onAction="#openStoreOrders" prefHeight="71.0" prefWidth="97.0" text="store orders">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>

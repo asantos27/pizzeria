@@ -27,8 +27,17 @@ public class MainMenuController {
     private Button storeOrdersButton;
 
     @FXML
-    void openCurrOrder(ActionEvent event) {
+    void openCurrOrder(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
 
+        CurrentOrderController currentOrderView = loader.getController();
+        //pizzaView.loadPizzaData(pizza type)
+        //pizzaView.setMainController(this);
+        Scene scene = new Scene(loader.load(), 600, 550);
+        Stage stage = new Stage();
+        stage.setTitle("Order Detail");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

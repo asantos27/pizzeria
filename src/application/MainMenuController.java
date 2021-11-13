@@ -31,8 +31,6 @@ public class MainMenuController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
 
         CurrentOrderController currentOrderView = loader.getController();
-        //pizzaView.loadPizzaData(pizza type)
-        //pizzaView.setMainController(this);
         Scene scene = new Scene(loader.load(), 600, 550);
         Stage stage = new Stage();
         stage.setTitle("Order Detail");
@@ -41,8 +39,15 @@ public class MainMenuController {
     }
 
     @FXML
-    void openStoreOrders(ActionEvent event) {
+    void openStoreOrders(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
 
+        StoreOrdersController storeOrdersView = loader.getController();
+        Scene scene = new Scene(loader.load(), 600, 550);
+        Stage stage = new Stage();
+        stage.setTitle("Store Orders");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

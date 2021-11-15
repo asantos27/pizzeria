@@ -14,10 +14,15 @@ public abstract class Pizza {
     final static double sizeIncrease = 2;
     final static double additionalTopping = 1.49;
 
+    /**
+     * Pizza constructor
+     */
     public Pizza() {
     }
 
-
+    /**
+     * Pizza constructor
+     */
     public void Pizza() {
     }
 
@@ -51,6 +56,26 @@ public abstract class Pizza {
         return this.size;
     }
 
+    /**
+     * Getter method to get the default toppings of a pizza
+     * @return array list of default toppings
+     */
+    public ArrayList<Topping> getDefaultToppings() {
+        return new ArrayList<Topping>();
+    }
+
+    /**
+     * Getter method to get the remaining toppings of a pizza
+     * @return array list of remaining toppings
+     */
+    public ArrayList<Topping> getAllToppings() {
+        return new ArrayList<Topping>();
+    }
+
+    /**
+     * Getter method to get additional price of pizza per size increase
+     * @return the increased price of pizza for each size
+     */
     public double getSizePrice() {
         if (this.size == Size.MEDIUM) {
             return 2.00;

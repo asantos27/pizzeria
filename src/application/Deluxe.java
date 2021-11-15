@@ -17,11 +17,40 @@ public class Deluxe extends Pizza {
      */
     public Deluxe() {
         super();
-        this.addTopping(Topping.CHEESE);
-        this.addTopping(Topping.HAM);
-        this.addTopping(Topping.MUSHROOMS);
-        this.addTopping(Topping.ONIONS);
-        this.addTopping(Topping.SAUSAGE);
+        for (Topping t: getDefaultToppings()) {
+            this.addTopping(t);
+        }
+
+    }
+
+    /**
+     * Getter method to get default toppings for a deluxe pizzaa
+     * @return default toppings for deluxe
+     */
+    @Override
+    public ArrayList<Topping> getDefaultToppings() {
+        ArrayList<Topping> defaultToppings = new ArrayList<Topping>();
+        defaultToppings.add(Topping.CHEESE);
+        defaultToppings.add(Topping.HAM);
+        defaultToppings.add(Topping.MUSHROOMS);
+        defaultToppings.add(Topping.ONIONS);
+        defaultToppings.add(Topping.SAUSAGE);
+        return defaultToppings;
+    }
+
+    /**
+     * Getter method to get remaining toppings for a deluxe pizza
+     * @return remaining toppings for deluxe
+     */
+    @Override
+    public ArrayList<Topping> getAllToppings() {
+        ArrayList<Topping> remainingToppings = new ArrayList<Topping>();
+        for (Topping t: Topping.values()) {
+            if (!(getDefaultToppings().contains(t))) {
+                remainingToppings.add(t);
+            }
+        }
+        return remainingToppings;
     }
 
     /**

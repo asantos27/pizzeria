@@ -1,7 +1,10 @@
 package application;
 
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+
 
 /**
  * This class creates an object for a deluxe pizza
@@ -58,8 +61,7 @@ public class Deluxe extends Pizza {
      */
     @Override
     public double price() {
-        pizzaPrice += this.getSizePrice() + Math.max(0, toppings.size() - defaultTopping) * additionalTopping;
-        return pizzaPrice;
+        return pizzaPrice + this.getSizePrice() + Math.max(0, toppings.size() - defaultTopping) * additionalTopping;
     }
 
     /**
@@ -68,8 +70,17 @@ public class Deluxe extends Pizza {
      */
     @Override
     public String getPizzaPrice() {
-        price();
         DecimalFormat df = new DecimalFormat("###,##0.00");
-        return df.format(pizzaPrice);
+        return df.format(this.price());
     }
+
+    /**
+     * Method that returns a deluxe pizza order and its details
+     * @return String: pizza, toppings, size, and extras
+     */
+    public String toString() {
+        String toppingsList = toppings.toString().substring(1, toppings.toString().length() - 1);
+        return "Deluxe pizza, " + toppingsList + ", " + String.valueOf(this.getPizzaSize()) + ", $" + getPizzaPrice();
+    }
+
 }

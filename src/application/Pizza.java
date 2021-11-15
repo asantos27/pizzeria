@@ -77,9 +77,16 @@ public abstract class Pizza {
      * @return string of pizza's price
      */
     public String getPizzaPrice() {
-        return "";
+        return null;
     }
 
+    /**
+     * Method that will be overridden in its subclasses.
+     * @return String: pizza, toppings, size, and extras
+     */
+    public String toString() {
+        return null;
+    }
 
 
     /**

@@ -36,6 +36,7 @@ public class CustomizationController extends PizzaMaker{
     String pizzaFlavor;
     Alert a = new Alert(AlertType.NONE);
     private Pizza pizza = new Deluxe();
+    private Order pizzaOrder = new Order();
 
     /**
      * Setter method to set flavor of pizza
@@ -60,7 +61,9 @@ public class CustomizationController extends PizzaMaker{
      * @param String flavor of pizza
      */
     @FXML
-    public void loadPizzaData() {
+    public void loadPizzaData(Order order) {
+        pizzaOrder = order;
+
         sizeComboBox.getItems().addAll(Size.SMALL, Size.MEDIUM, Size.LARGE);
         sizeComboBox.setValue(Size.SMALL);
 
@@ -82,9 +85,18 @@ public class CustomizationController extends PizzaMaker{
         pizza.setPizzaSize(sizeComboBox.getValue());
         selectedToppingsList.getItems().addAll(pizza.getDefaultToppings());
         additionalToppingsList.getItems().addAll(pizza.getAllToppings());
-        System.out.println(pizza.price());
         pizzaPriceText.setText(pizza.getPizzaPrice());
 
+    }
+
+    /**
+     * Method to add order to current order
+     * @param event
+     */
+    @FXML
+    void addToOrder(ActionEvent event) {
+        pizzaOrder.add(pizza);
+        //aad confirmation
     }
 
     /**
@@ -110,20 +122,17 @@ public class CustomizationController extends PizzaMaker{
             return;
         }
 
+        if (selectedToppingsList.getItems().size() >= 7) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Maximum toppings (7) have been reached !");
+            alert.showAndWait();
+            return;
+        }
+
         additionalToppingsList.getItems().remove(topping);
         selectedToppingsList.getItems().add(topping);
-        System.out.println("before calling addTopping:" + pizza.toppings);
+
         pizza.addTopping(topping);
-
-        System.out.println("after calling addTopping:" + pizza.toppings);
-//        if (!(pizza.addTopping(topping))) {
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setHeaderText("Maximum toppings (7) have been reached !");
-//            alert.showAndWait();
-//            return;
-//        }
-
-        System.out.println(pizza.toppings);
         pizzaPriceText.setText(pizza.getPizzaPrice());
     }
 
@@ -134,12 +143,20 @@ public class CustomizationController extends PizzaMaker{
         if (topping == null) {
             return;
         }
+
+        for (Topping t: pizza.getDefaultToppings()) {
+            if (t == topping) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("You are removing the essential toppings!");
+                alert.showAndWait();
+            }
+        }
+
         selectedToppingsList.getItems().remove(topping);
         additionalToppingsList.getItems().add(topping);
 
         pizza.removeTopping(topping);
-        //TO IMPLEMENT: alert user if they are removing a default topping
-        pizzaPriceText.setText(pizza.getPizzaPrice()); //does not work
+        pizzaPriceText.setText(pizza.getPizzaPrice());
 
     }
 

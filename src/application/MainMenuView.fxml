@@ -24,7 +24,7 @@
                   <Font name="Monospaced Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="inputPhoneNum" prefHeight="26.0" prefWidth="202.0" />
+            <TextField fx:id="inputPhoneNum" onAction="#setCustomerPhoneNumber" prefHeight="26.0" prefWidth="202.0" />
          </children>
       </HBox>
       <Button fx:id="orderDeluxeButton" contentDisplay="TOP" layoutX="62.0" layoutY="129.0" mnemonicParsing="false" onAction="#orderDeluxe" prefHeight="101.0" prefWidth="127.0" text="order deluxe">

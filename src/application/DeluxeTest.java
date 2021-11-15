@@ -42,5 +42,20 @@ public class DeluxeTest {
       //  assertTrue(pizza.price() == 14.99);
     }
 
+    /**
+     * Test method for {@link Deluxe#toString()}.
+     */
+    @org.junit.Test
+    public void test_Deluxe_toString() {
+        Deluxe pizza = new Deluxe();
+        pizza.setPizzaSize(Size.LARGE);
+        System.out.println(pizza.getPizzaPrice());
+        pizza.addTopping(Topping.OLIVES);
+       //System.out.println(pizza.price());
+        System.out.println(pizza.toString());
+        pizza.addTopping(Topping.BEEF);
+        System.out.println(pizza.getPizzaPrice());
+    }
+
 
 }

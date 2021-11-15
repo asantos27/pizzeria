@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -14,6 +16,9 @@ public class MainMenuController {
 
     @FXML
     private Button currOrderButton;
+
+    @FXML
+    private TextField inputPhoneNum;
 
     @FXML
     private Button orderDeluxeButton;
@@ -27,21 +32,46 @@ public class MainMenuController {
     @FXML
     private Button storeOrdersButton;
 
+    Order order = new Order();
+    StoreOrders storeOrder = new StoreOrders();
+    /**
+     * Method to set customer phone number from main menu
+     */
+    @FXML
+    void setCustomerPhoneNumber() {
+        try {
+            order = new Order();
+            order.setPhoneNumber(Integer.parseInt(inputPhoneNum.getText()));
+
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Starting a new order!");
+        alert.showAndWait();
+        System.out.println(order.getPhoneNumber());
+    }
+
     /**
      * Method to open the current order view
      * @param event
      * @throws IOException
      */
     @FXML
-    void openCurrOrder(ActionEvent event) throws IOException{
+    void openCurrOrder(ActionEvent event) {
        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
+           Parent root = (Parent) loader.load();
            CurrentOrderController currentOrderView = loader.getController();
-           Scene scene = new Scene(loader.load(), 600, 550);
+
+           Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
            stage.setTitle("Order Detail");
            stage.setScene(scene);
            stage.show();
+
+           currentOrderView.loadCurrOrder(order);
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -53,7 +83,7 @@ public class MainMenuController {
      * @throws IOException
      */
     @FXML
-    void openStoreOrders(ActionEvent event) throws IOException{
+    void openStoreOrders(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
             StoreOrdersController storeOrdersView = loader.getController();
@@ -86,7 +116,7 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Deluxe");
-           pizzaView.loadPizzaData();
+           pizzaView.loadPizzaData(order);
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -111,7 +141,7 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Hawaiian");
-           pizzaView.loadPizzaData();
+           pizzaView.loadPizzaData(order);
        } catch (IOException e) {
             e.printStackTrace();
        }
@@ -136,7 +166,7 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Pepperoni");
-           pizzaView.loadPizzaData();
+           pizzaView.loadPizzaData(order);
        } catch (IOException e) {
            e.printStackTrace();
        }

@@ -7,6 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.text.DecimalFormat;
+
 public class StoreOrdersController {
 
     @FXML
@@ -19,14 +21,46 @@ public class StoreOrdersController {
     private TextField orderTotal;
 
     @FXML
-    private ComboBox<Integer> phoneNumList;
+    private ComboBox<Order> phoneNumList;
 
     @FXML
-    private ListView<String> storeOrdersList;
+    private ListView<Pizza> storeOrdersList;
 
+    StoreOrders currStoreOrders = new StoreOrders();
+
+    @FXML
+    public void setStoreOrders(StoreOrders storeOrders) {
+        currStoreOrders = storeOrders;
+    }
+
+    @FXML
+    public void loadPhoneNumbers() {
+        phoneNumList.getItems().clear();
+        for (Order o: currStoreOrders.storeOrderList) {
+            phoneNumList.getItems().add(o);
+        }
+    }
+
+    @FXML
+    void loadCustomerOrder(ActionEvent event) {
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+        storeOrdersList.getItems().clear();
+        if (phoneNumList.getSelectionModel().getSelectedItem() != null) {
+           Order custOrder = phoneNumList.getSelectionModel().getSelectedItem();
+           storeOrdersList.getItems().addAll(custOrder.getOrderList());
+           orderTotal.setText(df.format(custOrder.getOrderTotal()));
+        }
+    }
 
     @FXML
     void cancelOrder(ActionEvent event) {
+        if (phoneNumList.getSelectionModel().getSelectedItem() != null) {
+            Order custOrder = phoneNumList.getSelectionModel().getSelectedItem();
+            currStoreOrders.remove(custOrder);
+            phoneNumList.getItems().remove(custOrder);
+            storeOrdersList.getItems().remove(custOrder);
+            orderTotal.setText(" ");
+        }
 
     }
 

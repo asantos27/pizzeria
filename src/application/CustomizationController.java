@@ -47,6 +47,11 @@ public class CustomizationController extends PizzaMaker{
         this.pizzaFlavor = pizzaFlavor;
     }
 
+    @FXML
+    public void setPizzaOrder(Order order) {
+        pizzaOrder = order;
+    }
+
     /**
      * Getter method to get flavor of pizza
      * @return flavor of pizza
@@ -61,9 +66,7 @@ public class CustomizationController extends PizzaMaker{
      * @param String flavor of pizza
      */
     @FXML
-    public void loadPizzaData(Order order) {
-        pizzaOrder = order;
-
+    public void loadPizzaData() {
         sizeComboBox.getItems().addAll(Size.SMALL, Size.MEDIUM, Size.LARGE);
         sizeComboBox.setValue(Size.SMALL);
 
@@ -96,7 +99,9 @@ public class CustomizationController extends PizzaMaker{
     @FXML
     void addToOrder(ActionEvent event) {
         pizzaOrder.add(pizza);
-        //aad confirmation
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText("Pizza added to order!");
+        alert.showAndWait();
     }
 
     /**
@@ -123,7 +128,7 @@ public class CustomizationController extends PizzaMaker{
         }
 
         if (selectedToppingsList.getItems().size() >= 7) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Maximum toppings (7) have been reached !");
             alert.showAndWait();
             return;
@@ -146,7 +151,7 @@ public class CustomizationController extends PizzaMaker{
 
         for (Topping t: pizza.getDefaultToppings()) {
             if (t == topping) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                Alert alert = new Alert(AlertType.WARNING);
                 alert.setHeaderText("You are removing the essential toppings!");
                 alert.showAndWait();
             }

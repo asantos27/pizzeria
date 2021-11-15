@@ -7,12 +7,13 @@ import java.util.ArrayList;
  * @author Daniel Flts, Alyssa Santos
  */
 public class Order implements Customizable{
-    public static int phoneNumber;
+    private int phoneNumber;
     public ArrayList<Pizza> orderList = new ArrayList<Pizza>();
 
     private double subtotal = 0;
     private double salesTax = 0;
     private double orderTotal = 0;
+
 
     /**
      * Method to add pizza
@@ -47,9 +48,26 @@ public class Order implements Customizable{
      */
     public void clearList() {
         orderList.clear();
+        phoneNumber = 0;
         subtotal = 0;
         salesTax = 0;
         orderTotal = 0;
+    }
+
+    /**
+     * Setter method to set customer phone number
+     * @param customer phone number
+     */
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Getter method to get customer phone number
+     * @return customer phone number
+     */
+    public int getPhoneNumber() {
+        return this.phoneNumber;
     }
 
     /**
@@ -61,7 +79,7 @@ public class Order implements Customizable{
     }
 
     /**
-     * Setter method to set the subtotal
+     * Setter method to set the subtotal of orders
      * @param subtotal of pizza
      */
     public void setSubTotal(double subtotal) {
@@ -73,7 +91,7 @@ public class Order implements Customizable{
      * @return subtotal
      */
     public double getSubtotal() {
-        return this.subtotal;
+        return subtotal;
     }
 
     /**
@@ -87,7 +105,7 @@ public class Order implements Customizable{
      * Getter method to get sales tax
      * @return sales tax
      */
-    public double salesTax() {
+    public double getSalesTax() {
         return this.salesTax;
     }
 
@@ -104,6 +122,11 @@ public class Order implements Customizable{
      */
     public double getOrderTotal() {
         return this.orderTotal;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.phoneNumber);
     }
 
 }

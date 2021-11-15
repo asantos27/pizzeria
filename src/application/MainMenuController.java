@@ -38,19 +38,18 @@ public class MainMenuController {
      * Method to set customer phone number from main menu
      */
     @FXML
-    void setCustomerPhoneNumber() {
+    void setCustomerPhoneNumber(ActionEvent event) {
         try {
             order = new Order();
             order.setPhoneNumber(Integer.parseInt(inputPhoneNum.getText()));
-
         } catch (NumberFormatException e) {
+            //System.out.println("error");
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Starting a new order!");
         alert.showAndWait();
-        System.out.println(order.getPhoneNumber());
     }
 
     /**
@@ -64,6 +63,7 @@ public class MainMenuController {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
            Parent root = (Parent) loader.load();
            CurrentOrderController currentOrderView = loader.getController();
+          // StoreOrdersController storeOrdersView = loader.getController();
 
            Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
@@ -71,6 +71,8 @@ public class MainMenuController {
            stage.setScene(scene);
            stage.show();
 
+           currentOrderView.setCurrOrder(order);
+           currentOrderView.setStoreOrders(storeOrder);
            currentOrderView.loadCurrOrder(order);
        } catch (IOException e) {
            e.printStackTrace();
@@ -86,12 +88,17 @@ public class MainMenuController {
     void openStoreOrders(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
+            Parent root = (Parent) loader.load();
             StoreOrdersController storeOrdersView = loader.getController();
-            Scene scene = new Scene(loader.load(), 600, 550);
+
+            Scene scene = new Scene(root, 600, 550);
             Stage stage = new Stage();
             stage.setTitle("Store Orders");
             stage.setScene(scene);
             stage.show();
+
+            storeOrdersView.setStoreOrders(storeOrder);
+            storeOrdersView.loadPhoneNumbers();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,7 +123,8 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Deluxe");
-           pizzaView.loadPizzaData(order);
+           pizzaView.setPizzaOrder(order);
+           pizzaView.loadPizzaData();
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -141,7 +149,8 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Hawaiian");
-           pizzaView.loadPizzaData(order);
+           pizzaView.setPizzaOrder(order);
+           pizzaView.loadPizzaData();
        } catch (IOException e) {
             e.printStackTrace();
        }
@@ -166,7 +175,8 @@ public class MainMenuController {
            stage.show();
 
            pizzaView.setPizzaFlavor("Pepperoni");
-           pizzaView.loadPizzaData(order);
+           pizzaView.setPizzaOrder(order);
+           pizzaView.loadPizzaData();
        } catch (IOException e) {
            e.printStackTrace();
        }

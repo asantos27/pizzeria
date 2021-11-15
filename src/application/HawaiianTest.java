@@ -21,8 +21,9 @@ public class HawaiianTest {
         pizza.setPizzaSize(Size.MEDIUM);
         pizza.addTopping(Topping.CHEESE);
         pizza.addTopping(Topping.MUSHROOMS);
-        //System.out.println(pizza.price());
-        assertTrue(pizza.price() == 15.97);
+        System.out.println(pizza.toppings);
+        System.out.println(pizza.price());
+        //assertTrue(pizza.price() == 15.97);
     }
 
     /**

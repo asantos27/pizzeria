@@ -73,6 +73,16 @@ public abstract class Pizza {
     }
 
     /**
+     * Getter method to get the string representation price of a pizza
+     * @return string of pizza's price
+     */
+    public String getPizzaPrice() {
+        return "";
+    }
+
+
+
+    /**
      * Getter method to get additional price of pizza per size increase
      * @return the increased price of pizza for each size
      */

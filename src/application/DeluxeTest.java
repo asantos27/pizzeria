@@ -8,8 +8,10 @@ public class DeluxeTest {
     @org.junit.Test
     public void test_Deluxe_price() {
         Deluxe pizza = new Deluxe();
-        pizza.setPizzaSize(Size.SMALL);
-        assertTrue(pizza.price() == 12.99);
+        pizza.setPizzaSize(Size.LARGE);
+      //  System.out.println(pizza.price());
+        System.out.println(pizza.getPizzaPrice());
+       // assertTrue(pizza.price() == 12.99);
     }
 
     /**

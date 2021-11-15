@@ -20,11 +20,10 @@ public class Deluxe extends Pizza {
         for (Topping t: getDefaultToppings()) {
             this.addTopping(t);
         }
-
     }
 
     /**
-     * Getter method to get default toppings for a deluxe pizzaa
+     * Getter method to get default toppings for a deluxe pizza
      * @return default toppings for deluxe
      */
     @Override
@@ -61,5 +60,16 @@ public class Deluxe extends Pizza {
     public double price() {
         pizzaPrice += this.getSizePrice() + Math.max(0, toppings.size() - defaultTopping) * additionalTopping;
         return pizzaPrice;
+    }
+
+    /**
+     * Getter method to get the string value of the pizza's price
+     * @return string of pizza's price
+     */
+    @Override
+    public String getPizzaPrice() {
+        price();
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+        return df.format(pizzaPrice);
     }
 }

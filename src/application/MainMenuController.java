@@ -78,7 +78,6 @@ public class MainMenuController {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();
-           //pizzaView.setMainController(this);
 
            Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
@@ -91,7 +90,6 @@ public class MainMenuController {
        } catch (IOException e) {
            e.printStackTrace();
        }
-
     }
 
     /**
@@ -105,17 +103,18 @@ public class MainMenuController {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();
-           //pizzaView.loadPizzaData(pizza type)
-           //pizzaView.setMainController(this);
+
            Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
            stage.setTitle("Order Hawaiian Pizza");
            stage.setScene(scene);
            stage.show();
+
+           pizzaView.setPizzaFlavor("Hawaiian");
+           pizzaView.loadPizzaData();
        } catch (IOException e) {
             e.printStackTrace();
        }
-
     }
 
     /**
@@ -129,13 +128,15 @@ public class MainMenuController {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();
-           //pizzaView.loadPizzaData(pizza type)
-           //pizzaView.setMainController(this);
+
            Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
            stage.setTitle("Order Pepperoni Pizza");
            stage.setScene(scene);
            stage.show();
+
+           pizzaView.setPizzaFlavor("Pepperoni");
+           pizzaView.loadPizzaData();
        } catch (IOException e) {
            e.printStackTrace();
        }

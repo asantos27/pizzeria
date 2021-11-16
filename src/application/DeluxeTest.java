@@ -1,6 +1,10 @@
 package application;
 import static org.junit.Assert.*;
 
+/**
+ * JUnit test for the Pizza subclass Deluxe
+ * @author Daniel Flts, Alyssa Santos
+ */
 public class DeluxeTest {
     /**
      * Test method for {@link Deluxe#price()}.

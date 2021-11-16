@@ -3,13 +3,6 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
-import java.io.File;
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class StoreOrdersController {
@@ -81,6 +74,10 @@ public class StoreOrdersController {
         }
     }
 
+    /**
+     * Method to execute the functionality of the export orders button
+     * @param event
+     */
     @FXML
     void exportOrders(ActionEvent event) {
         currStoreOrders.export();

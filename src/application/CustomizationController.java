@@ -33,8 +33,8 @@ public class CustomizationController extends PizzaMaker{
     @FXML
     private ComboBox<Size> sizeComboBox;
 
-    String pizzaFlavor;
-    Alert a = new Alert(AlertType.NONE);
+    private String pizzaFlavor;
+
     private Pizza pizza = new Deluxe();
     private Order pizzaOrder = new Order();
 
@@ -47,6 +47,10 @@ public class CustomizationController extends PizzaMaker{
         this.pizzaFlavor = pizzaFlavor;
     }
 
+    /**
+     * Setter method to set order to share data between controllers
+     * @param order
+     */
     @FXML
     public void setPizzaOrder(Order order) {
         pizzaOrder = order;
@@ -69,7 +73,16 @@ public class CustomizationController extends PizzaMaker{
     public void loadPizzaData() {
         sizeComboBox.getItems().addAll(Size.SMALL, Size.MEDIUM, Size.LARGE);
         sizeComboBox.setValue(Size.SMALL);
+        generatePizza();
+        pizza.setPizzaSize(sizeComboBox.getValue());
+        pizzaPriceText.setText(pizza.getPizzaPrice());
 
+    }
+
+    /**
+     * Helper method
+     */
+    public void generatePizza() {
         if (getPizzaFlavor() == "Deluxe") {
             Image deluxeImage = new Image("https://www.killingthyme.net/wp-content/uploads/2020/09/veggie-deluxe-pizza-4.jpg");
             pizzaImage.setImage(deluxeImage);
@@ -85,11 +98,11 @@ public class CustomizationController extends PizzaMaker{
             pizzaImage.setImage(pepperoniImage);
             pizza = createPizza("Pepperoni");
         }
-        pizza.setPizzaSize(sizeComboBox.getValue());
+        selectedToppingsList.getItems().clear();
         selectedToppingsList.getItems().addAll(pizza.getDefaultToppings());
-        additionalToppingsList.getItems().addAll(pizza.getAllToppings());
-        pizzaPriceText.setText(pizza.getPizzaPrice());
 
+        additionalToppingsList.getItems().clear();
+        additionalToppingsList.getItems().addAll(pizza.getAllToppings());
     }
 
     /**
@@ -99,6 +112,7 @@ public class CustomizationController extends PizzaMaker{
     @FXML
     void addToOrder(ActionEvent event) {
         pizzaOrder.add(pizza);
+        generatePizza();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText("Pizza added to order!");
         alert.showAndWait();
@@ -141,6 +155,10 @@ public class CustomizationController extends PizzaMaker{
         pizzaPriceText.setText(pizza.getPizzaPrice());
     }
 
+    /**
+     * Method to execute the functionality of the remove topping button
+     * @param event
+     */
     @FXML
     void removeToppingButton(ActionEvent event) {
         Topping topping = selectedToppingsList.getSelectionModel().getSelectedItem();
@@ -156,16 +174,11 @@ public class CustomizationController extends PizzaMaker{
                 alert.showAndWait();
             }
         }
-
         selectedToppingsList.getItems().remove(topping);
         additionalToppingsList.getItems().add(topping);
 
         pizza.removeTopping(topping);
         pizzaPriceText.setText(pizza.getPizzaPrice());
-
     }
-
-
-
 
 }

@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -47,6 +46,10 @@ public class StoreOrders implements Customizable {
         return true;
     }
 
+    /**
+     * Method to save store orders to an external file
+     * @return
+     */
     public boolean export() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open Target File for the Export");
@@ -55,7 +58,6 @@ public class StoreOrders implements Customizable {
         Stage stage = new Stage();
         File targetFile = chooser.showSaveDialog(stage); //get the reference of the target file
         DecimalFormat df = new DecimalFormat("###,##0.00");
-
         String path = targetFile.getAbsolutePath();
 
         if (targetFile == null || path == null) {
@@ -64,7 +66,6 @@ public class StoreOrders implements Customizable {
             alert.showAndWait();
             return false;
         }
-
         try {
             FileWriter myWriter = new FileWriter(path);
             if (storeOrderList.size() == 0) {

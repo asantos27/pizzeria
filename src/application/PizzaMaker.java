@@ -7,6 +7,11 @@ package application;
  */
 public class PizzaMaker { //create an instance of subclasses based on the chosen flavor
 
+    /**
+     * Method to create an instance of subclasses based on chosen flavor
+     * @param flavor
+     * @return
+     */
     public static Pizza createPizza(String flavor) {
         Deluxe tempPizza = new Deluxe();
         if (flavor == "Deluxe") {

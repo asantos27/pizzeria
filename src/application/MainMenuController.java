@@ -79,15 +79,12 @@ public class MainMenuController {
                 alert.showAndWait();
                 return false;
             }
-
             if (phoneNumExists(Integer.parseInt(inputPhoneNum.getText()))) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Customer's phone number already exists! Please enter a new number.");
                 alert.showAndWait();
                 return false;
             }
-
-
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Not a valid number! Please enter a valid number.");

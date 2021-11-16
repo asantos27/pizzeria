@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.text.DecimalFormat;
 
+/**
+ * This class gives functionality to the store orders gui
+ * @author Daniel Flts, Alyssa Santos
+ */
 public class StoreOrdersController {
 
     @FXML

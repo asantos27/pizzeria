@@ -7,6 +7,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * This class gives functionality to the pizza customization gui
+ * @author Daniel Flts, Alyssa Santos
+ */
 public class CustomizationController extends PizzaMaker{
 
     @FXML

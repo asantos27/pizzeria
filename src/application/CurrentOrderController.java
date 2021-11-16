@@ -9,6 +9,10 @@ import javafx.scene.control.TextField;
 
 import java.text.DecimalFormat;
 
+/**
+ * This class gives functionality to the current order gui
+ * @author Daniel Flts, Alyssa Santos
+ */
 public class CurrentOrderController {
 
     @FXML

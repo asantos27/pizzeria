@@ -12,6 +12,10 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
+/**
+ * This class gives functionality to the main menu gui
+ * @author Daniel Flts, Alyssa Santos
+ */
 public class MainMenuController {
 
     @FXML

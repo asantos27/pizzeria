@@ -2,11 +2,14 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import java.io.File;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class StoreOrdersController {
@@ -28,11 +31,18 @@ public class StoreOrdersController {
 
     StoreOrders currStoreOrders = new StoreOrders();
 
+    /**
+     * Setter method for store orders data to be shrared between controllers
+     * @param storeOrders
+     */
     @FXML
     public void setStoreOrders(StoreOrders storeOrders) {
         currStoreOrders = storeOrders;
     }
 
+    /**
+     * Helper method to load phone numbers into combo box
+     */
     @FXML
     public void loadPhoneNumbers() {
         phoneNumList.getItems().clear();
@@ -41,6 +51,10 @@ public class StoreOrdersController {
         }
     }
 
+    /**
+     * Helper method to load customer order based on customer phone number
+     * @param event
+     */
     @FXML
     void loadCustomerOrder(ActionEvent event) {
         DecimalFormat df = new DecimalFormat("###,##0.00");
@@ -52,6 +66,10 @@ public class StoreOrdersController {
         }
     }
 
+    /**
+     * Helper method that gives functionality to the cancel button
+     * @param event
+     */
     @FXML
     void cancelOrder(ActionEvent event) {
         if (phoneNumList.getSelectionModel().getSelectedItem() != null) {
@@ -61,12 +79,11 @@ public class StoreOrdersController {
             storeOrdersList.getItems().remove(custOrder);
             orderTotal.setText(" ");
         }
-
     }
 
     @FXML
     void exportOrders(ActionEvent event) {
-
+        currStoreOrders.export();
     }
 
 }

@@ -34,6 +34,7 @@ public class MainMenuController {
 
     Order order = new Order();
     StoreOrders storeOrder = new StoreOrders();
+
     /**
      * Method to set customer phone number from main menu
      */
@@ -41,15 +42,87 @@ public class MainMenuController {
     void setCustomerPhoneNumber(ActionEvent event) {
         try {
             order = new Order();
+            if (!(checkPhoneNumValidity(Integer.parseInt(inputPhoneNum.getText())))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Not a valid number! Please enter a valid number.");
+                alert.showAndWait();
+                return;
+            }
+
+            if (phoneNumExists(Integer.parseInt(inputPhoneNum.getText()))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Customer's phone number already exists! Please enter a new number.");
+                alert.showAndWait();
+                return;
+            }
             order.setPhoneNumber(Integer.parseInt(inputPhoneNum.getText()));
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Starting a new order!");
+            alert.showAndWait();
+
         } catch (NumberFormatException e) {
-            //System.out.println("error");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Not a valid number! Please enter a valid number.");
+            alert.showAndWait();
             return;
         }
+    }
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Starting a new order!");
-        alert.showAndWait();
+    /**
+     * Method that handles checks for valid phone numbers
+     */
+    public boolean validPhoneNumber() {
+        try {
+            if (!(checkPhoneNumValidity(Integer.parseInt(inputPhoneNum.getText())))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Not a valid number! Please enter a valid number.");
+                alert.showAndWait();
+                return false;
+            }
+
+            if (phoneNumExists(Integer.parseInt(inputPhoneNum.getText()))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Customer's phone number already exists! Please enter a new number.");
+                alert.showAndWait();
+                return false;
+            }
+
+
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Not a valid number! Please enter a valid number.");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Method that checks validity of phone number length
+     * @return false if number is not valid
+     */
+    public boolean checkPhoneNumValidity(int phoneNumber) {
+        if (String.valueOf(phoneNumber).length() != 10) {
+            return false;
+        } else if (phoneNumber == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Method that checks if given customer phone number already exists
+     * @param phoneNumber
+     * @return true if number exists, false if unique
+     */
+    public boolean phoneNumExists(int phoneNumber) {
+        for (Order o: storeOrder.storeOrderList) {
+            if (phoneNumber == o.getPhoneNumber()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -59,11 +132,14 @@ public class MainMenuController {
      */
     @FXML
     void openCurrOrder(ActionEvent event) {
-       try {
+        if (validPhoneNumber() == false) {
+            return;
+        }
+
+        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
            Parent root = (Parent) loader.load();
            CurrentOrderController currentOrderView = loader.getController();
-          // StoreOrdersController storeOrdersView = loader.getController();
 
            Scene scene = new Scene(root, 600, 550);
            Stage stage = new Stage();
@@ -74,9 +150,9 @@ public class MainMenuController {
            currentOrderView.setCurrOrder(order);
            currentOrderView.setStoreOrders(storeOrder);
            currentOrderView.loadCurrOrder(order);
-       } catch (IOException e) {
+        } catch (IOException e) {
            e.printStackTrace();
-       }
+        }
     }
 
     /**
@@ -86,6 +162,7 @@ public class MainMenuController {
      */
     @FXML
     void openStoreOrders(ActionEvent event){
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersView.fxml"));
             Parent root = (Parent) loader.load();
@@ -102,7 +179,6 @@ public class MainMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -111,7 +187,11 @@ public class MainMenuController {
      */
     @FXML
     void orderDeluxe(ActionEvent event) {
-       try {
+        if (validPhoneNumber() == false) {
+            return;
+        }
+
+        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();
@@ -137,7 +217,11 @@ public class MainMenuController {
      */
     @FXML
     void orderHawaiian(ActionEvent event) {
-       try {
+        if (validPhoneNumber() == false) {
+            return;
+        }
+
+        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();
@@ -163,7 +247,11 @@ public class MainMenuController {
      */
     @FXML
     void orderPepperoni(ActionEvent event) {
-       try {
+        if (validPhoneNumber() == false) {
+            return;
+        }
+
+        try {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomizationView.fxml"));
            Parent root = (Parent) loader.load();
            CustomizationController pizzaView = loader.getController();

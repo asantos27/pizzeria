@@ -35,6 +35,10 @@ public class CurrentOrderController {
     private Order currOrder;
     private StoreOrders storeOrders;
 
+    /**
+     * Method that places the pizza order when "Place order" button is clicked
+     * @param event
+     */
     @FXML
     void placeOrder(ActionEvent event) {
         storeOrders.add(currOrder);
@@ -49,21 +53,36 @@ public class CurrentOrderController {
         currOrderList.getItems().clear();
     }
 
+    /**
+     * Setter method to set current order to share between controllers
+     * @param order
+     */
     @FXML
     public void setCurrOrder(Order order) {
         currOrder = order;
     }
 
+    /**
+     * Setter method to set current store order to share between controllers
+     * @param store order
+     */
     @FXML
     public void setStoreOrders(StoreOrders storeOrder) {
         storeOrders = storeOrder;
     }
 
+    /**
+     * Method to call the remove selected pizza
+     * @param event
+     */
     @FXML
     void removePizza(ActionEvent event) {
        removeSelectedPizza();
     }
 
+    /**
+     * Helper method to remove selected pizza from list
+     */
     @FXML
     void removeSelectedPizza() {
         Pizza removedPizza = currOrderList.getSelectionModel().getSelectedItem();
@@ -77,6 +96,10 @@ public class CurrentOrderController {
         updatePrices();
     }
 
+    /**
+     * Helper method to load the current order information
+     * @param order
+     */
     @FXML
     public void loadCurrOrder(Order order) {
         outputPhoneNum.setText(String.valueOf(currOrder.getPhoneNumber()));
@@ -84,8 +107,11 @@ public class CurrentOrderController {
             currOrderList.getItems().addAll(p);
         }
         updatePrices();
-  }
+    }
 
+    /**
+     * Helper method that updates prices real time
+     */
     @FXML
     void updatePrices() {
         double subtotal = 0;
